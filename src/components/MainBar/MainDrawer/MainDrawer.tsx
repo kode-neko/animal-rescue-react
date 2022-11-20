@@ -13,7 +13,9 @@ import {
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useTranslation } from 'react-i18next';
-import { DrawerHeader } from '../DrawerHeader';
+import { useNavigate } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import DrawerHeader from './DrawerHeader';
 import { SwitchTheme } from '../../SwitchTheme';
 import { SwitchLang } from '../../SwitchLang';
 import { socialList, title } from '../../../common/constants';
@@ -26,13 +28,20 @@ type MainBarProps = {
 
 const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   const ListActions = () => (
     <List>
+      <ListItem key="home" disablePadding>
+        <ListItemButton onClick={() => { navigate('/'); handleDrawerClose(); }}>
+          <ListItemIcon><HomeIcon /></ListItemIcon>
+          <ListItemText primary={t('pages.master')} />
+        </ListItemButton>
+      </ListItem>
       <ListItem key="create" disablePadding>
-        <ListItemButton>
+        <ListItemButton onClick={() => { navigate('/create'); handleDrawerClose(); }}>
           <ListItemIcon><AddCircleIcon /></ListItemIcon>
-          <ListItemText primary="create" />
+          <ListItemText primary={t('pages.create')} />
         </ListItemButton>
       </ListItem>
       <Divider />
@@ -53,7 +62,7 @@ const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
     <List>
       {socialList.map((social: Social) => (
         <ListItem key={social.name} disablePadding>
-          <ListItemButton>
+          <ListItemButton onClick={() => navigate(social.url)}>
             <ListItemIcon><social.icon /></ListItemIcon>
             <ListItemText>{ social.name }</ListItemText>
           </ListItemButton>

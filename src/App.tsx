@@ -1,10 +1,14 @@
 import React, { useMemo } from 'react';
-import { createTheme, CssBaseline } from '@mui/material';
+import {
+  createTheme, CssBaseline, Container, Box,
+} from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { useSelector } from 'react-redux';
+import { Outlet, RouterProvider } from 'react-router-dom';
 import { Theme } from './common/model';
 import { RootState } from './common/store/store';
-import { Master } from './pages';
+import router from './common/router';
+import { MainBar } from './components/MainBar';
 
 export default function App() {
   const theme = useSelector((state:RootState) => state.user.theme);
@@ -18,8 +22,8 @@ export default function App() {
   );
   return (
     <ThemeProvider theme={themeMUI}>
-      <CssBaseline />
-      <Master />
+        <CssBaseline />
+        <RouterProvider router={router} />
     </ThemeProvider>
   );
 }

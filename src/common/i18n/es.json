@@ -1,1 +1,7 @@
-{}
+{
+  "pages": {
+    "master": "Home",
+    "create": "Crear",
+    "detail": "Info"
+  }
+}

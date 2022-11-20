@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { useTranslation } from 'react-i18next';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ShareIcon from '@mui/icons-material/Share';
+import { useNavigate } from 'react-router-dom';
 import { MainDrawer } from './MainDrawer';
 import { socialList, title } from '../../common/constants';
 import { SwitchTheme } from '../SwitchTheme';
@@ -22,6 +23,8 @@ const MainBar = () => {
   const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const handleDrawerToggle = () => setIsOpen(!isOpen);
+
+  const navigate = useNavigate();
 
   const [anchorElRRSS, setAnchorElRRSS] = React.useState<null | HTMLElement>(null);
   const openRRSS = Boolean(anchorElRRSS);
@@ -58,6 +61,7 @@ const MainBar = () => {
       aria-controls="add"
       aria-haspopup="true"
       sx={{ color: 'white' }}
+      onClick={() => navigate('/create')}
     >
       <AddCircleIcon />
     </IconButton>
