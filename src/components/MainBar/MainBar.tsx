@@ -13,29 +13,24 @@ import { useTranslation } from 'react-i18next';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ShareIcon from '@mui/icons-material/Share';
 import { MainDrawer } from './MainDrawer';
-import { title } from '../../common/constants';
+import { socialList, title } from '../../common/constants';
 import { SwitchTheme } from '../SwitchTheme';
 import { SwitchLang } from '../SwitchLang';
+import Social from '../../common/model/Social';
 
 const MainBar = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [isOpenRRSS, setIsOpenRRSS] = useState<boolean>(false);
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [lang, setLang] = useState<string>('es');
   const handleDrawerToggle = () => setIsOpen(!isOpen);
-  // setAnchorEl(event.currentTarget);
-  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {};
-  // const handleClose = () => setAnchorEl(null);
-  const handleClose = () => {};
 
   const [anchorElRRSS, setAnchorElRRSS] = React.useState<null | HTMLElement>(null);
   const openRRSS = Boolean(anchorElRRSS);
-  const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClickSocialBtn = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElRRSS(event.currentTarget);
   };
-  const handleMenuCloseRRSS = () => {
-    setAnchorElRRSS(null);
+  const handleMenuSocialClose = () => setAnchorElRRSS(null);
+  const handleMenuSocialClickOpt = (social: Social) => {
+    console.log(`click ${social.name}`);
   };
 
   const renderMenu = (
@@ -44,11 +39,42 @@ const MainBar = () => {
       id="menuSocial"
       keepMounted
       open={openRRSS}
-      onClose={handleMenuCloseRRSS}
+      onClose={handleMenuSocialClose}
     >
-      <MenuItem onClick={handleMenuCloseRRSS}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuCloseRRSS}>My account</MenuItem>
+      {socialList.map((social: Social) => (
+        <MenuItem key={social.name} onClick={() => handleMenuSocialClickOpt(social)}>
+          {social.name}
+        </MenuItem>
+      ))}
     </Menu>
+  );
+
+  const optionsBar = () => (
+    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '6px' } }}>
+    <IconButton
+      size="large"
+      edge="end"
+      aria-label="create new animal"
+      aria-controls="add"
+      aria-haspopup="true"
+      sx={{ color: 'white' }}
+    >
+      <AddCircleIcon />
+    </IconButton>
+    <IconButton
+      size="large"
+      edge="end"
+      aria-label="watch social media"
+      aria-controls="social"
+      sx={{ color: 'white', marginRight: '4px' }}
+      onClick={handleClickSocialBtn}
+    >
+      <ShareIcon />
+    </IconButton>
+    {renderMenu}
+    <SwitchTheme />
+    <SwitchLang />
+  </Box>
   );
 
   return (
@@ -71,31 +97,6 @@ const MainBar = () => {
           >
             {title}
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '6px' } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="create new animal"
-              aria-controls="add"
-              aria-haspopup="true"
-              sx={{ color: 'white' }}
-            >
-              <AddCircleIcon />
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="watch social media"
-              aria-controls="social"
-              sx={{ color: 'white', marginRight: '4px' }}
-              onClick={handleProfileMenuOpen}
-            >
-              <ShareIcon />
-            </IconButton>
-            {renderMenu}
-            <SwitchTheme />
-            <SwitchLang />
-          </Box>
         </Toolbar>
       </AppBar>
       <MainDrawer
