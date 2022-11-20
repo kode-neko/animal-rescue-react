@@ -3,11 +3,11 @@ import { userSlice } from '../reducer';
 const {
   setUser,
   setLang,
-  setLTheme,
+  setTheme,
 } = userSlice.actions;
 
 export {
   setUser,
   setLang,
-  setLTheme,
+  setTheme,
 };

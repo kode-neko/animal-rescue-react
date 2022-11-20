@@ -1,31 +1,37 @@
-import React, { useState } from 'react';
-import { FormControlLabel, Switch, Box } from '@mui/material';
-// import LanguageIcon from '@mui/icons-material/Language';
+import React from 'react';
+import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { RootState, setLang } from '../../common/store';
+import TranslateIcon from '@mui/icons-material/Translate';
+import { RootState } from '../../common/store/store';
+import { setLang } from '../../common/store/action/user';
 
 const SwitchLang = () => {
   const dispatch = useDispatch();
   const { i18n } = useTranslation();
   const lang = useSelector((status: RootState) => status.user.lang);
-  const handleSwitch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const langNew = value === 'es' ? 'en' : 'es';
-    i18n.changeLanguage(langNew, (err, t) => {
-      console.error(err);
-    });
-    dispatch(setLang({ lang: langNew }));
+  const handleSwitch = async (
+    event: React.MouseEvent<HTMLElement>,
+    newLang: string | null,
+  ) => {
+    if (newLang !== null) {
+      i18n.changeLanguage(newLang as string);
+      dispatch(setLang({ lang: newLang as string }));
+    }
   };
   return (
-    <Box display='flex'>
-      <FormControlLabel
-        control={<Switch defaultChecked color="default"/>}
+    <Box display="flex" alignItems="center" gap="10px">
+      <ToggleButtonGroup
         value={lang}
-        label={lang.toLocaleUpperCase()}
-        onChange={(e) => handleSwitch(e as React.ChangeEvent<HTMLInputElement>)}
-      />
-      { /* <LanguageIcon fontSize='medium'/> */}
+        exclusive
+        size="small"
+        onChange={handleSwitch}
+        aria-label="changing language"
+      >
+        <ToggleButton value="en" aria-label="english">{'EN'}</ToggleButton>
+        <ToggleButton value="es" aria-label="spanish">{'ES'}</ToggleButton>
+      </ToggleButtonGroup>
+      <TranslateIcon />
     </Box>
   );
 };

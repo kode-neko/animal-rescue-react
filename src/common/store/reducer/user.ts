@@ -5,7 +5,7 @@ import { Theme, User } from '../../model';
 const initialState: User = {
   name: '',
   mail: '',
-  lang: '',
+  lang: 'es',
   theme: Theme.DARK,
 };
 
@@ -19,8 +19,8 @@ const reducers = {
   setLang: (state: User, action: PayloadAction<Pick<User, 'lang'>>) => {
     state.lang = action.payload.lang;
   },
-  setLTheme: (state: User, action: PayloadAction<Pick<User, 'theme'>>) => {
-    state.lang = action.payload.theme;
+  setTheme: (state: User, action: PayloadAction<Pick<User, 'theme'>>) => {
+    state.theme = action.payload.theme;
   },
 };
 
