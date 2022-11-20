@@ -11,14 +11,13 @@ import {
   Typography,
 } from '@mui/material';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { useTranslation } from 'react-i18next';
 import { DrawerHeader } from '../DrawerHeader';
 import { SwitchTheme } from '../../SwitchTheme';
 import { SwitchLang } from '../../SwitchLang';
-import { title } from '../../../common/constants';
+import { socialList, title } from '../../../common/constants';
+import Social from '../../../common/model/Social';
 
 type MainBarProps = {
   isOpen: boolean
@@ -52,18 +51,14 @@ const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
 
   const ListRRSS = () => (
     <List>
-      <ListItem key="twitter" disablePadding>
-        <ListItemButton>
-          <ListItemIcon><TwitterIcon /></ListItemIcon>
-          <ListItemText>Twitter</ListItemText>
-        </ListItemButton>
-      </ListItem>
-      <ListItem key="facebook" disablePadding>
-        <ListItemButton>
-          <ListItemIcon><FacebookIcon /></ListItemIcon>
-          <ListItemText>Facebook</ListItemText>
-        </ListItemButton>
-      </ListItem>
+      {socialList.map((social: Social) => (
+        <ListItem key={social.name} disablePadding>
+          <ListItemButton>
+            <ListItemIcon><social.icon /></ListItemIcon>
+            <ListItemText>{ social.name }</ListItemText>
+          </ListItemButton>
+        </ListItem>
+      ))}
     </List>
   );
 

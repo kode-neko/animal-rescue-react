@@ -49,7 +49,7 @@ const MainBar = () => {
     </Menu>
   );
 
-  const optionsBar = () => (
+  const optionsBar = (
     <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '6px' } }}>
     <IconButton
       size="large"
@@ -97,6 +97,7 @@ const MainBar = () => {
           >
             {title}
           </Typography>
+          {optionsBar}
         </Toolbar>
       </AppBar>
       <MainDrawer
