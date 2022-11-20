@@ -36,11 +36,16 @@ const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
           <ListItemText primary="create" />
         </ListItemButton>
       </ListItem>
+      <Divider />
       <ListItem key="theme" disablePadding>
-        <ListItemText><SwitchTheme /></ListItemText>
+        <ListItemText sx={{ padding: '8px 16px' }}>
+          <SwitchTheme />
+        </ListItemText>
       </ListItem>
       <ListItem key="lang" disablePadding>
-        <ListItemText><SwitchLang /></ListItemText>
+        <ListItemText sx={{ padding: '8px 16px' }}>
+          <SwitchLang />
+        </ListItemText>
       </ListItem>
     </List>
   );
@@ -48,12 +53,16 @@ const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
   const ListRRSS = () => (
     <List>
       <ListItem key="twitter" disablePadding>
-        <ListItemIcon><TwitterIcon /></ListItemIcon>
-        <ListItemText>Twitter</ListItemText>
+        <ListItemButton>
+          <ListItemIcon><TwitterIcon /></ListItemIcon>
+          <ListItemText>Twitter</ListItemText>
+        </ListItemButton>
       </ListItem>
       <ListItem key="facebook" disablePadding>
-        <ListItemIcon><FacebookIcon /></ListItemIcon>
-        <ListItemText>Facebook</ListItemText>
+        <ListItemButton>
+          <ListItemIcon><FacebookIcon /></ListItemIcon>
+          <ListItemText>Facebook</ListItemText>
+        </ListItemButton>
       </ListItem>
     </List>
   );
