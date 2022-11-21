@@ -3,5 +3,40 @@
     "master": "Home",
     "create": "Crear",
     "detail": "Info"
+  },
+  "labels": {
+    "bday": "Nacimiento",
+    "species": "Especie",
+    "colorFur": "Color",
+    "eyes": "Ojos",
+    "size": "Tamaño",
+    "sizeFur": "Pelaje",
+    "home": "Home",
+    "create": "Crear"
+  },
+  "species": {
+    "cat": "Gato",
+    "dog": "Perro",
+    "cow": "Vaca"
+  },
+  "colors": {
+    "black": "Negro",
+    "white": "Blanco",
+    "gray": "Gris",
+    "red": "Rojo",
+    "blue": "Azul",
+    "brown": "Marrón",
+    "dark_brown": "Marrón Oscuro",
+    "blonde": "Rubio",
+    "green": "Verde",
+    "yellow": "Amarillo"
+  },
+  "sizes": {
+    "small": "Pequeño",
+    "medium": "Mediano",
+    "large": "Grande",
+    "none": "Ninguno",
+    "long": "largo",
+    "short": "Corto"
   }
 }

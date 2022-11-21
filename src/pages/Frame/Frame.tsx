@@ -4,9 +4,9 @@ import { Outlet } from 'react-router-dom';
 import { MainBar } from '../../components/MainBar';
 
 const Frame = () => (
-  <Container>
+  <Container maxWidth="md">
     <MainBar />
-    <Box sx={{ mt: 10 }}>
+    <Box sx={{ mt: 15 }}>
       <Outlet />
     </Box>
   </Container>

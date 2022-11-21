@@ -1,0 +1,1 @@
+export { getAnimal } from './Animal';

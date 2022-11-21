@@ -3,5 +3,40 @@
     "master": "Home",
     "create": "Create",
     "detail": "Detail"
+  },
+  "labels": {
+    "bday": "B-Day",
+    "species": "Species",
+    "colorFur": "Color",
+    "eyes": "Eyes",
+    "size": "Size",
+    "sizeFur": "Fur",
+    "home": "Home",
+    "create": "Create"
+  },
+  "species": {
+    "cat": "Cat",
+    "dog": "Dog",
+    "cow": "Cow"
+  },
+  "colors": {
+    "black": "Black",
+    "white": "White",
+    "gray": "Gray",
+    "red": "Red",
+    "blue": "Blue",
+    "brown": "Brown",
+    "dark_brown": "Dark Brown",
+    "blonde": "Blonde",
+    "green": "Green",
+    "yellow": "Yellow"
+  },
+  "sizes": {
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "none": "None",
+    "long": "Long",
+    "short": "Short"
   }
 }

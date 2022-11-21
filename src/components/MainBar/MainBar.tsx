@@ -9,7 +9,6 @@ import {
   MenuItem,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useTranslation } from 'react-i18next';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ShareIcon from '@mui/icons-material/Share';
 import { useNavigate } from 'react-router-dom';
@@ -20,21 +19,18 @@ import { SwitchLang } from '../SwitchLang';
 import Social from '../../common/model/Social';
 
 const MainBar = () => {
-  const { t } = useTranslation();
-  const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleDrawerToggle = () => setIsOpen(!isOpen);
-
   const navigate = useNavigate();
 
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [anchorElRRSS, setAnchorElRRSS] = React.useState<null | HTMLElement>(null);
   const openRRSS = Boolean(anchorElRRSS);
+
+  const handleDrawerToggle = () => setIsOpen(!isOpen);
   const handleClickSocialBtn = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElRRSS(event.currentTarget);
   };
   const handleMenuSocialClose = () => setAnchorElRRSS(null);
-  const handleMenuSocialClickOpt = (social: Social) => {
-    console.log(`click ${social.name}`);
-  };
+  const handleMenuSocialClickOpt = (social: Social) => navigate(social.url);
 
   const renderMenu = (
     <Menu
