@@ -4,6 +4,10 @@
     "create": "Crear",
     "detail": "Info"
   },
+  "msg": {
+    "success": "Petición con éxito",
+    "error": "Hubo un error. Inténtelo más tarde"
+  },
   "labels": {
     "bday": "Nacimiento",
     "species": "Especie",

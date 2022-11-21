@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react';
 import {
-  createTheme, CssBaseline, Container, Box,
+  createTheme,
+  CssBaseline,
 } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { useSelector } from 'react-redux';
-import { Outlet, RouterProvider } from 'react-router-dom';
+import { RouterProvider } from 'react-router-dom';
+import { SnackbarProvider } from 'notistack';
 import { Theme } from './common/model';
 import { RootState } from './common/store/store';
 import router from './common/router';
-import { MainBar } from './components/MainBar';
 
 export default function App() {
   const theme = useSelector((state:RootState) => state.user.theme);
@@ -22,8 +23,10 @@ export default function App() {
   );
   return (
     <ThemeProvider theme={themeMUI}>
-        <CssBaseline />
+      <CssBaseline />
+      <SnackbarProvider anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}>
         <RouterProvider router={router} />
+      </SnackbarProvider>
     </ThemeProvider>
   );
 }
