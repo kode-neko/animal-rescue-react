@@ -46,6 +46,11 @@ const Master = () => {
   const handleModalAccept = () => {
     setDeleteModal({ open: false, animal: undefined });
   };
+
+  const translateTitle = (): string => {
+    const species = deleteModal.animal?.species;
+    t('modal.title.delete', { species: t(`species.${Species[species]}`) });
+  };
   const translateBody = (): string => {
     const species = deleteModal.animal?.species;
     const spiciesVal = Species[species];
@@ -70,7 +75,7 @@ const Master = () => {
         ))}
       </Grid>
       <Modal
-        title={t('modal.title.delete', { species: t(`species.${Species[deleteModal.animal?.species]}`) }) as string}
+        title={ translateTitle() as string}
         body={ translateBody() as string}
         open={deleteModal.open}
         handleClose={handleModalCancel}

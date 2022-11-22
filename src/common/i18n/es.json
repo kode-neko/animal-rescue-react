@@ -4,6 +4,7 @@
     "create": "Crear",
     "detail": "Info"
   },
+  "credits": "Kodeneko @ 2022",
   "msg": {
     "success": "Petición con éxito",
     "error": "Hubo un error. Inténtelo más tarde"

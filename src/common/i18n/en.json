@@ -4,6 +4,7 @@
     "create": "Create",
     "detail": "Detail"
   },
+  "credits": "Kodeneko @ 2022",
   "msg": {
     "success": "Petition successfull",
     "error": "There was an error. Try again later"
