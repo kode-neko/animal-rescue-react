@@ -16,7 +16,18 @@
     "size": "Tamaño",
     "sizeFur": "Pelaje",
     "home": "Home",
-    "create": "Crear"
+    "create": "Crear",
+    "cancel": "Cancelar",
+    "accept": "Aceptar"
+  },
+  "modal": {
+    "title": {
+      "delete": "Borrar {{species}}"
+    },
+    "body": {
+      "delete_male": "¿Quieres borrar el {{species}} llamado {{name}}?",
+      "delete_female": "¿Quieres borrar la {{species}} llamada {{name}}?"
+    }
   },
   "species": {
     "cat": "Gato",

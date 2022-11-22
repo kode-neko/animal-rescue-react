@@ -16,7 +16,17 @@
     "size": "Size",
     "sizeFur": "Fur",
     "home": "Home",
-    "create": "Create"
+    "create": "Create",
+    "cancel": "Cancel",
+    "accept": "Accept"
+  },
+  "modal": {
+    "title": {
+      "delete": "Delete {{species}}"
+    },
+    "body": {
+      "delete": "Do you want to the delete the {{species}} named {{name}}?"
+    }
   },
   "species": {
     "cat": "Cat",

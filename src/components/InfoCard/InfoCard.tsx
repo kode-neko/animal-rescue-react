@@ -23,10 +23,12 @@ import {
 import { RootState } from '../../common/store/store';
 
 type InfoCardProps = {
-    animal: Animal
+    animal: Animal;
+    handleEdit: (animal: Animal) => void;
+    handleDelete: (animal: Animal) => void;
 }
 
-const InfoCard = ({ animal }: InfoCardProps) => {
+const InfoCard = ({ animal, handleEdit, handleDelete }: InfoCardProps) => {
   const { t } = useTranslation();
   const lang = useSelector((state:RootState) => state.user.lang);
 
@@ -95,10 +97,10 @@ const InfoCard = ({ animal }: InfoCardProps) => {
               display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '4px',
             }}>
                 <IconButton aria-label="delete" size="large">
-                    <DeleteIcon />
+                    <DeleteIcon onClick={() => handleDelete(animal)} />
                 </IconButton>
                 <IconButton aria-label="delete" size="large">
-                    <EditIcon />
+                    <EditIcon onClick={() => handleEdit(animal)} />
                 </IconButton>
             </CardActions>
         </Card>
