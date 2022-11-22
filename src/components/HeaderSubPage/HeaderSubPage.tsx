@@ -18,14 +18,14 @@ const HeaderSubPage = ({ path, title }: HeaderSubPageProps) => {
   const navigate = useNavigate();
   const handleClick = (link: string) => navigate(link);
   return (
-    <Box>
+    <Box sx={{ mb: 5 }}>
       <Breadcrumbs aria-label="breadcrumb">
         {path.map((page: RouteObject, index: number) => (
           <Link
             key={page.id}
             underline="hover"
             color={index !== path.length - 1 ? 'inherit' : 'text.primary'}
-            onClick={() => handleClick(page.path)}
+            onClick={() => handleClick(page.path as string)}
           >
            {t(`pages.${page.id as string}`)}
           </Link>

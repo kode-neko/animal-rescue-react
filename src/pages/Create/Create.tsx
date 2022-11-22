@@ -9,9 +9,9 @@ const Create = () => {
   const path = [routerMaster, routerCreate];
   return (
     <Box>
-        <Box><HeaderSubpage path={path} title="pages.master" /></Box>
+        <HeaderSubpage path={path} title="pages.create" />
         <Box>
-            Create
+            Adipisicing laborum excepteur ad ipsum nisi deserunt.
         </Box>
     </Box>
   );

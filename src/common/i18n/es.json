@@ -2,7 +2,7 @@
   "pages": {
     "master": "Home",
     "create": "Crear",
-    "detail": "Info"
+    "edit": "Editar"
   },
   "credits": "Kodeneko @ 2022",
   "msg": {
