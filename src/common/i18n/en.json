@@ -10,16 +10,20 @@
     "error": "There was an error. Try again later"
   },
   "labels": {
+    "name": "Name",
+    "sex": "Sex",
     "bday": "B-Day",
     "species": "Species",
     "colorFur": "Color",
     "eyes": "Eyes",
     "size": "Size",
     "sizeFur": "Fur",
+    "desc": "Description",
     "home": "Home",
     "create": "Create",
     "cancel": "Cancel",
-    "accept": "Accept"
+    "accept": "Accept",
+    "save": "Save"
   },
   "modal": {
     "title": {

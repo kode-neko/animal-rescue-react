@@ -41,13 +41,13 @@ enum SizeFur {
 }
 
 interface Animal {
-  id: string;
+  id?: string;
   name: string;
   bday: Date;
   sex: Sex;
   desc: string;
   breed: string;
-  color: ColorFur[];
+  color: ColorFur;
   eyes: ColorEyes;
   species: Species;
   size: Size;

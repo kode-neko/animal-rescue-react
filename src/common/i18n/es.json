@@ -10,16 +10,20 @@
     "error": "Hubo un error. Inténtelo más tarde"
   },
   "labels": {
+    "name": "Nombre",
+    "sex": "Sexo",
     "bday": "Nacimiento",
     "species": "Especie",
     "colorFur": "Color",
     "eyes": "Ojos",
     "size": "Tamaño",
     "sizeFur": "Pelaje",
+    "desc": "Descripción",
     "home": "Home",
     "create": "Crear",
     "cancel": "Cancelar",
-    "accept": "Aceptar"
+    "accept": "Aceptar",
+    "save": "Guardar"
   },
   "modal": {
     "title": {

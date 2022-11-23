@@ -3,6 +3,7 @@ export { default as Theme } from './Theme';
 export type { default as Btn } from './Btn';
 export {
   Species,
+  Sex,
   ColorFur,
   ColorEyes,
   Size,
