@@ -40,16 +40,19 @@ const Master = () => {
   const handleDelete = (animal: Animal) => {
     setDeleteModal({ open: true, animal });
   };
+  const handleModalClose = () => {
+    setDeleteModal({ ...deleteModal, open: false });
+  };
   const handleModalCancel = () => {
-    setDeleteModal({ open: false, animal: undefined });
+    setDeleteModal({ ...deleteModal, open: false });
   };
   const handleModalAccept = () => {
-    setDeleteModal({ open: false, animal: undefined });
+    setDeleteModal({ ...deleteModal, open: false });
   };
 
   const translateTitle = (): string => {
     const species = deleteModal.animal?.species;
-    t('modal.title.delete', { species: t(`species.${Species[species]}`) });
+    return t('modal.title.delete', { species: t(`species.${Species[species]}`) });
   };
   const translateBody = (): string => {
     const species = deleteModal.animal?.species;
@@ -78,7 +81,7 @@ const Master = () => {
         title={ translateTitle() as string}
         body={ translateBody() as string}
         open={deleteModal.open}
-        handleClose={handleModalCancel}
+        handleClose={handleModalClose}
         btnList={[
           { id: 'close', label: t('labels.cancel'), handleClick: handleModalCancel },
           { id: 'accept', label: t('labels.accept'), handleClick: handleModalAccept },

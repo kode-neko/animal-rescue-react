@@ -26,14 +26,18 @@
       "delete": "Borrar {{species}}"
     },
     "body": {
-      "delete_male": "¿Quieres borrar el {{species}} llamado {{name}}?",
-      "delete_female": "¿Quieres borrar la {{species}} llamada {{name}}?"
+      "delete_male": "¿Quieres borrar el {{species}} llamado \"{{name}}\"?",
+      "delete_female": "¿Quieres borrar la {{species}} llamada \"{{name}}\"?"
     }
   },
   "species": {
     "cat": "Gato",
     "dog": "Perro",
     "cow": "Vaca"
+  },
+  "sex": {
+    "male": "Macho",
+    "female": "Hembra"
   },
   "colors": {
     "black": "Negro",

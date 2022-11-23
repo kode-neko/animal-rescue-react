@@ -26,13 +26,17 @@
       "delete": "Delete {{species}}"
     },
     "body": {
-      "delete": "Do you want to the delete the {{species}} named {{name}}?"
+      "delete": "Do you want to the delete the {{species}} named \"{{name}}\"?"
     }
   },
   "species": {
     "cat": "Cat",
     "dog": "Dog",
     "cow": "Cow"
+  },
+  "sex": {
+    "male": "Male",
+    "female": "Female"
   },
   "colors": {
     "black": "Black",
