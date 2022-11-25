@@ -19,46 +19,59 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useTranslation } from 'react-i18next';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import dayjs, { Dayjs } from 'dayjs';
 import {
   Species, Sex, ColorFur, ColorEyes, Size, SizeFur, Animal,
-} from '../../common/model/Animal';
+} from '../../common/model';
 
 type FormProps = {
     animal: Animal,
-    handleSave: (animal: Animal) => void
+    handleSave: (values: Animal) => void
 }
 
 const Form = ({ animal, handleSave }: FormProps) => {
   const { t } = useTranslation();
+  const [date, setDate] = React.useState<Dayjs | null>(dayjs());
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .required(t('form.empty') as string)
+      .max(30, t('form.max', { size: '30' }) as string),
+    sex: Yup.mixed<Sex>().oneOf(Object.values(Sex)),
+    desc: Yup.string()
+      .min(30, t('form.min', { size: '500' }) as string)
+      .max(500, t('form.max', { size: '500' }) as string),
+    breed: Yup.string().max(50, t('form.max', { size: '30' }) as string),
+    color: Yup.mixed<ColorFur>().oneOf(Object.values(ColorFur)),
+    eyes: Yup.mixed<ColorEyes>().oneOf(Object.values(ColorEyes)),
+    species: Yup.mixed<Species>().oneOf(Object.values(Species)),
+    size: Yup.mixed<Size>().oneOf(Object.values(Size)),
+    sizeFur: Yup.mixed<SizeFur>().oneOf(Object.values(SizeFur)),
+  });
   const formik = useFormik<Animal>({
     initialValues: animal,
-    validationSchema: Yup.object({
-      name: Yup.string().max(30, t('hint.name') as string),
-      bday: Yup.date(),
-      sex: Yup.mixed<Sex>().oneOf(Object.values(Sex)),
-      desc: Yup.string().max(100, t('hint.desc') as string),
-      breed: Yup.string().max(30, t('hint.breed') as string),
-      color: Yup.mixed<ColorFur>().oneOf(Object.values(ColorFur)),
-      eyes: Yup.mixed<ColorEyes>().oneOf(Object.values(ColorEyes)),
-      species: Yup.mixed<Species>().oneOf(Object.values(Species)),
-      size: Yup.mixed<Size>().oneOf(Object.values(Size)),
-      sizeFur: Yup.mixed<SizeFur>().oneOf(Object.values(SizeFur)),
-    }),
-    onSubmit: handleSave,
+    validationSchema,
+    onSubmit: (values: Animal) => {
+      if (validationSchema.validateSync(values) && date?.isValid()) {
+        handleSave({ ...values, bday: new Date(date.toISOString()) });
+      }
+    },
   });
 
   return (
         <Box component="form" onSubmit={formik.handleSubmit}>
-            <TextField
-                id="name"
-                label={t('labels.name')}
-                variant="filled"
-                value={formik.values.name}
-                onChange={formik.handleChange}
-                helperText={formik.errors.name}
-                fullWidth
-            />
             <Grid container rowSpacing={2} columnSpacing={{ xs: 2 }} sx={{ my: 2 }}>
+                <Grid item xs={12}>
+                    <TextField
+                        id="name"
+                        label={t('labels.name')}
+                        variant="filled"
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                        helperText={formik.errors.name}
+                        sx={{ height: 80 }}
+                        fullWidth
+                    />
+                </Grid>
                 <Grid item xs={6}>
                     <FormControl fullWidth>
                         <FormLabel>{t('labels.sex')}</FormLabel>
@@ -68,8 +81,8 @@ const Form = ({ animal, handleSave }: FormProps) => {
                             value={formik.values.sex}
                             onChange={formik.handleChange}
                         >
-                            <FormControlLabel value={Sex.MALE} control={<Radio />} label={t('sex.male')} />
-                            <FormControlLabel value={Sex.FEMALE} control={<Radio />} label={t('sex.female')} />
+                            <FormControlLabel value={String(Sex.MALE)} control={<Radio />} label={t('sex.male')} />
+                            <FormControlLabel value={String(Sex.FEMALE)} control={<Radio />} label={t('sex.female')} />
                         </RadioGroup>
                     </FormControl>
                 </Grid>
@@ -82,19 +95,31 @@ const Form = ({ animal, handleSave }: FormProps) => {
                             value={formik.values.species}
                             onChange={formik.handleChange}
                         >
-                            <FormControlLabel value={Species.CAT} control={<Radio />} label={t('species.cat')} />
-                            <FormControlLabel value={Species.DOG} control={<Radio />} label={t('species.dog')} />
-                            <FormControlLabel value={Species.COW} control={<Radio />} label={t('species.cow')} />
+                            <FormControlLabel value={String(Species.CAT)} control={<Radio />} label={t('species.cat')} />
+                            <FormControlLabel value={String(Species.DOG)} control={<Radio />} label={t('species.dog')} />
+                            <FormControlLabel value={String(Species.COW)} control={<Radio />} label={t('species.cow')} />
                         </RadioGroup>
                     </FormControl>
+                </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        id="breed"
+                        label={t('labels.breed')}
+                        variant="filled"
+                        value={formik.values.breed}
+                        onChange={formik.handleChange}
+                        helperText={formik.errors.breed}
+                        sx={{ height: 80 }}
+                        fullWidth
+                    />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <FormControl fullWidth>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DatePicker
                                 label={t('labels.bday')}
-                                value={formik.values.bday}
-                                onChange={formik.handleChange}
+                                value={date}
+                                onChange={(newValue) => setDate(newValue)}
                                 renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
@@ -106,12 +131,13 @@ const Form = ({ animal, handleSave }: FormProps) => {
                         <Select
                             labelId="colorLabel"
                             id="color"
+                            name="color"
                             value={formik.values.color}
                             label={t('labels.colorFur')}
                             onChange={formik.handleChange}
                         >
                             {Object.entries(ColorFur).map(([key, value]) => (
-                                <MenuItem key={value} value={ColorFur[key]}>{t(`colors.${value}`)}</MenuItem>
+                                <MenuItem key={value} value={value}>{t(`colors.${value}`)}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -122,12 +148,13 @@ const Form = ({ animal, handleSave }: FormProps) => {
                         <Select
                             labelId="eyesLabel"
                             id="eyes"
+                            name="eyes"
                             value={formik.values.eyes}
                             label={t('labels.eyes')}
                             onChange={formik.handleChange}
                         >
                             {Object.entries(ColorEyes).map(([key, value]) => (
-                                <MenuItem key={value} value={ColorEyes[key]}>{t(`colors.${value}`)}</MenuItem>
+                                <MenuItem key={value} value={value}>{t(`colors.${value}`)}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -138,12 +165,13 @@ const Form = ({ animal, handleSave }: FormProps) => {
                         <Select
                             labelId="sizeLabel"
                             id="size"
+                            name="size"
                             value={formik.values.size}
                             label={t('labels.size')}
                             onChange={formik.handleChange}
                         >
                             {Object.entries(Size).map(([key, value]) => (
-                                <MenuItem key={value} value={Size[key]}>{t(`sizes.${value}`)}</MenuItem>
+                                <MenuItem key={value} value={value}>{t(`sizes.${value}`)}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
@@ -153,29 +181,32 @@ const Form = ({ animal, handleSave }: FormProps) => {
                         <InputLabel id="sizeFurLabel">{t('labels.size')}</InputLabel>
                         <Select
                             labelId="sizeFurLabel"
-                            id="size"
+                            id="sizeFur"
+                            name="sizeFur"
                             value={formik.values.sizeFur}
                             label={t('labels.size')}
                             onChange={formik.handleChange}
                         >
                             {Object.entries(SizeFur).map(([key, value]) => (
-                                <MenuItem key={value} value={SizeFur[key]}>{t(`sizes.${value}`)}</MenuItem>
+                                <MenuItem key={value} value={value}>{t(`sizes.${value}`)}</MenuItem>
                             ))}
                         </Select>
                     </FormControl>
                 </Grid>
+                <Grid item xs={12}>
+                    <TextField
+                        id="desc"
+                        label={t('labels.desc')}
+                        multiline
+                        rows={6}
+                        variant="filled"
+                        fullWidth
+                        value={formik.values.desc}
+                        onChange={formik.handleChange}
+                        helperText={formik.errors.desc}
+                    />
+                </Grid>
             </Grid>
-            <TextField
-                id="desc"
-                label={t('labels.desc')}
-                multiline
-                rows={6}
-                variant="filled"
-                fullWidth
-                value={formik.values.desc}
-                onChange={formik.handleChange}
-                helperText={formik.errors.desc}
-            />
             <Box sx={{ my: 4, textAlign: 'right' }}>
                 <Button variant="contained" size='large' type='submit'>{t('labels.save')}</Button>
             </Box>

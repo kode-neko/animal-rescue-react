@@ -7,18 +7,20 @@ import { RootState } from '../../common/store/store';
 import { MainBar, Footer } from '../../components';
 
 const Frame = () => {
-  const animalGetList = useSelector((state:RootState) => state.app.animalGetList);
+  const {
+    animalGetList, animalGet, animalPost, animalPut, animalDelete,
+  } = useSelector((state:RootState) => state.app);
   return (
-    <Container maxWidth="md" sx={{ py: 15 }}>
+    <Box sx={{ py: 15 }}>
       <MainBar />
-      <Backdrop open={animalGetList}>
+      <Backdrop open={animalGetList || animalGet || animalPost || animalPut || animalDelete}>
         <CircularProgress color="inherit" />
       </Backdrop>
-      <Box sx={{ mb: 5 }}>
+      <Container maxWidth="md" sx={{ mb: 5 }}>
         <Outlet />
-      </Box>
+      </Container>
       <Footer />
-    </Container>
+    </Box>
   );
 };
 

@@ -6,14 +6,21 @@
   },
   "credits": "Kodeneko @ 2022",
   "msg": {
-    "success": "Petición con éxito",
-    "error": "Hubo un error. Inténtelo más tarde"
+    "errorGet": "No se pudo obtener la información del animal. Inténtelo más tarde",
+    "errorList": "No se pudo obtener el listado de animales. Inténtelo más tarde",
+    "successPut": "Animal editado con éxito",
+    "errorPut": "No se pudo editar el animal. Inténtelo más tarde",
+    "successPost": "Animal creado con éxito",
+    "errorPost": "No se pudo crear el animal. Inténtelo más tarde",
+    "successDelete": "Animal borrado con éxito",
+    "errorDelete": "No se pudo borrar el animal. Inténtelo más tarde"
   },
   "labels": {
     "name": "Nombre",
     "sex": "Sexo",
     "bday": "Nacimiento",
     "species": "Especie",
+    "breed": "Raza",
     "colorFur": "Color",
     "eyes": "Ojos",
     "size": "Tamaño",
@@ -23,7 +30,13 @@
     "create": "Crear",
     "cancel": "Cancelar",
     "accept": "Aceptar",
-    "save": "Guardar"
+    "save": "Guardar",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+  "form": {
+    "empty": "El campo no puede estar vacío",
+    "max": "Solo {{size}} caracteres máximo"
   },
   "modal": {
     "title": {

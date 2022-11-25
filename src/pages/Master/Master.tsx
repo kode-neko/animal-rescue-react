@@ -5,10 +5,10 @@ import {
   Grid,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { VariantType, useSnackbar } from 'notistack';
+import { useSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
-import { Animal, Btn, Species } from '../../common/model';
-import { getAnimal } from '../../common/api';
+import { Animal, Species } from '../../common/model';
+import { deleteAnimal, getAnimalList } from '../../common/api';
 import { InfoCard, Modal } from '../../components';
 import { setPending } from '../../common/store/action';
 
@@ -25,18 +25,15 @@ const Master = () => {
 
   useEffect(() => {
     dispatch(setPending({ type: 'animalGetList', state: true }));
-    getAnimal(offset)
+    getAnimalList(offset)
       .then((res) => setList(res))
       .catch(() => (
-        enqueueSnackbar(t('msg.error'), { variant: 'error' })
+        enqueueSnackbar(t('msg.errorList'), { variant: 'error' })
       ))
       .finally(() => (
         dispatch(setPending({ type: 'animalGetList', state: false }))));
   }, []);
 
-  const handleEdit = (animal: Animal) => {
-    console.log('edit');
-  };
   const handleDelete = (animal: Animal) => {
     setDeleteModal({ open: true, animal });
   };
@@ -47,7 +44,10 @@ const Master = () => {
     setDeleteModal({ ...deleteModal, open: false });
   };
   const handleModalAccept = () => {
-    setDeleteModal({ ...deleteModal, open: false });
+    deleteAnimal(deleteModal.animal?.id as string)
+      .then(() => enqueueSnackbar(t('msg.successDelete'), { variant: 'success' }))
+      .catch(() => enqueueSnackbar(t('msg.errorDelete'), { variant: 'error' }))
+      .finally(() => setDeleteModal({ ...deleteModal, open: false }));
   };
 
   const translateTitle = (): string => {
@@ -71,7 +71,6 @@ const Master = () => {
           <Grid item key={animal.id} xs={12}>
             <InfoCard
               animal={animal}
-              handleEdit={() => handleEdit(animal)}
               handleDelete={() => handleDelete(animal)}
             />
           </Grid>

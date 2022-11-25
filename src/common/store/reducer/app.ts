@@ -4,6 +4,10 @@ import App from '../../model/App';
 
 const initialState: App = {
   animalGetList: false,
+  animalGet: false,
+  animalPost: false,
+  animalPut: false,
+  animalDelete: false,
 };
 
 interface PayloadAppPending {

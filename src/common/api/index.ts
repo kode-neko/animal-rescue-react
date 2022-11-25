@@ -1,1 +1,7 @@
-export { getAnimal } from './Animal';
+export {
+  getAnimal,
+  getAnimalList,
+  postAnimal,
+  putAnimal,
+  deleteAnimal,
+} from './Animal';

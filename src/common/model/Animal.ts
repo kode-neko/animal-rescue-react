@@ -43,7 +43,7 @@ enum SizeFur {
 interface Animal {
   id?: string;
   name: string;
-  bday: Date;
+  bday?: Date;
   sex: Sex;
   desc: string;
   breed: string;

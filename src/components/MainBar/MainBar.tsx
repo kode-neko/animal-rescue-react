@@ -92,8 +92,9 @@ const MainBar = () => {
           </IconButton>
           <Typography
             variant="h6"
-            component="div"
-            sx={{ flexGrow: 1 }}
+            component="a"
+            sx={{ flexGrow: 1, cursor: 'pointer' }}
+            onClick={() => navigate('/')}
           >
             {title}
           </Typography>
