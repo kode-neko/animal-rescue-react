@@ -1,0 +1,81 @@
+{
+  "pages": {
+    "master": "Home",
+    "create": "Create",
+    "edit": "Edition"
+  },
+  "credits": "Kodeneko @ 2022",
+  "msg": {
+    "errorGet": "It cannot be got the animal information. Try again later",
+    "errorList": "It cannot be got the animal list. Try again later",
+    "successPut": "Animal edited successfully",
+    "errorPut": "It cannot be edited the animal. Try again later",
+    "successPost": "Animal created successfully",
+    "errorPost": "It cannot be created the animal. Try again later",
+    "successDelete": "Animal deleted successfully",
+    "errorDelete": "It cannot be deleted the animal. Try again later"
+  },
+  "labels": {
+    "name": "Name",
+    "sex": "Sex",
+    "bday": "B-Day",
+    "species": "Species",
+    "breed": "Breed",
+    "colorFur": "Color",
+    "eyes": "Eyes",
+    "size": "Size",
+    "sizeFur": "Fur",
+    "desc": "Description",
+    "home": "Home",
+    "create": "Create",
+    "cancel": "Cancel",
+    "accept": "Accept",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "placeH": {
+    "search": "Search..."
+  },
+  "form": {
+    "empty": "The field cannot be empty",
+    "max": "Only {{size}} max characters"
+  },
+  "modal": {
+    "title": {
+      "delete": "Delete {{species}}"
+    },
+    "body": {
+      "delete": "Do you want to the delete the {{species}} named \"{{name}}\"?"
+    }
+  },
+  "species": {
+    "cat": "Cat",
+    "dog": "Dog",
+    "cow": "Cow"
+  },
+  "sex": {
+    "male": "Male",
+    "female": "Female"
+  },
+  "colors": {
+    "black": "Black",
+    "white": "White",
+    "gray": "Gray",
+    "red": "Red",
+    "blue": "Blue",
+    "brown": "Brown",
+    "dark_brown": "Dark Brown",
+    "blonde": "Blonde",
+    "green": "Green",
+    "yellow": "Yellow"
+  },
+  "sizes": {
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large",
+    "none": "None",
+    "long": "Long",
+    "short": "Short"
+  }
+}
