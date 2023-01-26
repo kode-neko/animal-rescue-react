@@ -34,6 +34,9 @@
     "edit": "Edit",
     "delete": "Delete"
   },
+  "placeH": {
+    "search": "Search..."
+  },
   "form": {
     "empty": "The field cannot be empty",
     "max": "Only {{size}} max characters"

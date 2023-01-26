@@ -10,13 +10,13 @@ function getAnimal(id: string): Promise<Animal> {
     .then((raw) => raw.json());
 }
 
-function getAnimalList(offset: number): Promise<Animal[]> {
+function getAnimalList(offset: number, search: string): Promise<Animal[]> {
   return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal/list`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ offset, limit: 10 }),
+    body: JSON.stringify({ offset, limit: 10, search }),
   })
     .then((raw) => raw.json());
 }

@@ -34,6 +34,9 @@
     "edit": "Editar",
     "delete": "Eliminar"
   },
+  "placeH": {
+    "search": "Buscar..."
+  },
   "form": {
     "empty": "El campo no puede estar vacío",
     "max": "Solo {{size}} caracteres máximo"
