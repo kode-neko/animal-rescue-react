@@ -6,9 +6,8 @@ import { useSnackbar } from 'notistack';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
-import { HeaderSubpage } from '../../components/HeaderSubPage';
 import { routerCreate, routerMaster } from '../../common/router';
-import { Form } from '../../components';
+import { Form, HeaderSubPage } from '../../components';
 import {
   Animal,
   ColorEyes, ColorFur, Sex, Size, SizeFur, Species,
@@ -49,7 +48,7 @@ const Create = () => {
   };
   return (
     <Box>
-        <HeaderSubpage path={path} title="pages.create" />
+        <HeaderSubPage path={path} title="pages.create" />
         <Form
           animal={animal}
           handleSave={handleSave}

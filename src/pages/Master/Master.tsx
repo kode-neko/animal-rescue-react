@@ -10,11 +10,10 @@ import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
 import { useTranslation } from 'react-i18next';
 import SearchIcon from '@mui/icons-material/Search';
-import InfiniteScroll from 'react-infinite-scroller';
 import { Animal, Species } from '../../common/model';
+import { setPending } from '../../common/store/action';
 import { deleteAnimal, getAnimalList } from '../../common/api';
 import { InfoCard, Modal } from '../../components';
-import { setPending } from '../../common/store/action';
 
 const Master = () => {
   const { t } = useTranslation();

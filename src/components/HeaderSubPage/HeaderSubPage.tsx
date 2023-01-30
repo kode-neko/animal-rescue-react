@@ -5,7 +5,7 @@ import {
   Link,
   Typography,
 } from '@mui/material';
-import { RouteObject, useNavigate, useNavigation } from 'react-router-dom';
+import { RouteObject, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 type HeaderSubPageProps = {
