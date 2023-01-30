@@ -32,7 +32,8 @@
     "accept": "Aceptar",
     "save": "Guardar",
     "edit": "Editar",
-    "delete": "Eliminar"
+    "delete": "Eliminar",
+    "loadmore": "Cargar más"
   },
   "placeH": {
     "search": "Buscar..."

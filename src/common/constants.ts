@@ -17,9 +17,11 @@ const socialFacebook: Social = {
   icon: FacebookIcon,
 };
 const socialList: Social[] = [socialTwitter, socialFacebook];
+const limitListRest = 5;
 
 export {
   title,
   titleShort,
   socialList,
+  limitListRest,
 };

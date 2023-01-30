@@ -5,6 +5,7 @@ import {
   Grid,
   TextField,
   InputAdornment,
+  Button,
 } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { useSnackbar } from 'notistack';
@@ -14,10 +15,12 @@ import { Animal, Species } from '../../common/model';
 import { setPending } from '../../common/store/action';
 import { deleteAnimal, getAnimalList } from '../../common/api';
 import { InfoCard, Modal } from '../../components';
+import { limitListRest } from '../../common/constants';
 
 const Master = () => {
   const { t } = useTranslation();
   const [search, setSearch] = useState<string>('');
+  const [isVisibleBtn, setIsVisibleBtn] = useState<boolean>(true);
   const [deleteModal, setDeleteModal] = useState<{
     open: boolean;
     animal?: Animal
@@ -29,8 +32,12 @@ const Master = () => {
 
   const searchAnimal = (str: string) => {
     dispatch(setPending({ type: 'animalGetList', state: true }));
-    getAnimalList(offset, str)
-      .then((res) => setList([...list, ...res]))
+    getAnimalList(offset, str, limitListRest)
+      .then((res) => {
+        setIsVisibleBtn(res.length !== 0 || res.length < limitListRest);
+        setList([...list, ...res]);
+        setOffset(offset + limitListRest);
+      })
       .catch(() => (
         enqueueSnackbar(t('msg.errorList'), { variant: 'error' })
       ))
@@ -41,11 +48,12 @@ const Master = () => {
     if (e.key === 'Enter') {
       setOffset(0);
       setList([]);
+      setIsVisibleBtn(true);
       searchAnimal(search);
     }
   };
   const handleLoadMore = () => {
-    setOffset(offset + 1);
+    setOffset(offset + limitListRest);
     searchAnimal(search);
   };
   useEffect(() => {
@@ -104,22 +112,22 @@ const Master = () => {
         />
       </Box>
       <Grid container spacing={4}>
-        { /* <InfiniteScroll
-          pageStart={offset}
-          loadMore={handleLoadMore}
-          hasMore={false}
-          loader={<div className="loader" key={0}>Loading ...</div>}
-        > */}
-          {list.map((animal: Animal) => (
-            <Grid item key={animal.id} xs={12}>
-              <InfoCard
-                animal={animal}
-                handleDelete={() => handleDelete(animal)}
-              />
-            </Grid>
-          ))}
-        {/* </InfiniteScroll> */}
+        {list.map((animal: Animal) => (
+          <Grid item key={animal.id} xs={12}>
+            <InfoCard
+              animal={animal}
+              handleDelete={() => handleDelete(animal)}
+            />
+          </Grid>
+        ))}
       </Grid>
+      {isVisibleBtn && (
+        <Grid textAlign="center" sx={{ marginTop: '40px' }}>
+          <Button onClick={handleLoadMore} variant="outlined" size="medium">
+              {t('labels.loadmore')}
+          </Button>
+        </Grid>
+      )}
       <Modal
         title={ translateTitle() as string}
         body={ translateBody() as string}
