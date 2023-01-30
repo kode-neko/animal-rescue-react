@@ -31,7 +31,7 @@ const MainBar = () => {
     setAnchorElRRSS(event.currentTarget);
   };
   const handleMenuSocialClose = () => setAnchorElRRSS(null);
-  const handleMenuSocialClickOpt = (social: Social) => navigate(social.url);
+  const handleMenuSocialClickOpt = (social: Social) => window.open(social.url, '__blank');
 
   const renderMenu = (
     <Menu
@@ -43,7 +43,9 @@ const MainBar = () => {
     >
       {socialList.map((social: Social) => (
         <MenuItem key={social.name} onClick={() => handleMenuSocialClickOpt(social)}>
-          {social.name}
+          <Box sx={{ display: 'flex', gap: '6px' }}>
+            <social.icon sx={{ marginRight: '6px' }} />{social.name}
+          </Box>
         </MenuItem>
       ))}
     </Menu>
@@ -51,31 +53,31 @@ const MainBar = () => {
 
   const optionsBar = (
     <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '6px' } }}>
-    <IconButton
-      size="large"
-      edge="end"
-      aria-label="create new animal"
-      aria-controls="add"
-      aria-haspopup="true"
-      sx={{ color: 'white' }}
-      onClick={() => navigate('/create')}
-    >
-      <AddCircleIcon />
-    </IconButton>
-    <IconButton
-      size="large"
-      edge="end"
-      aria-label="watch social media"
-      aria-controls="social"
-      sx={{ color: 'white', marginRight: '4px' }}
-      onClick={handleClickSocialBtn}
-    >
-      <ShareIcon />
-    </IconButton>
-    {renderMenu}
-    <SwitchTheme />
-    <SwitchLang />
-  </Box>
+      <IconButton
+        size="large"
+        edge="end"
+        aria-label="create new animal"
+        aria-controls="add"
+        aria-haspopup="true"
+        sx={{ color: 'white' }}
+        onClick={() => navigate('/create')}
+      >
+        <AddCircleIcon />
+      </IconButton>
+      <IconButton
+        size="large"
+        edge="end"
+        aria-label="watch social media"
+        aria-controls="social"
+        sx={{ color: 'white', marginRight: '4px' }}
+        onClick={handleClickSocialBtn}
+      >
+        <ShareIcon />
+      </IconButton>
+      {renderMenu}
+      <SwitchTheme />
+      <SwitchLang />
+    </Box>
   );
 
   return (
