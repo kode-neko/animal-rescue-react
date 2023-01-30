@@ -12,6 +12,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import ShareIcon from '@mui/icons-material/Share';
 import { useNavigate } from 'react-router-dom';
+import PetsIcon from '@mui/icons-material/Pets';
 import { MainDrawer } from './MainDrawer';
 import { socialList, title } from '../../common/constants';
 import { SwitchTheme } from '../SwitchTheme';
@@ -90,6 +91,7 @@ const MainBar = () => {
           >
             <MenuIcon />
           </IconButton>
+          <PetsIcon sx={{ marginRight: '10px' }} />
           <Typography
             variant="h6"
             component="a"
