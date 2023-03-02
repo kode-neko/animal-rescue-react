@@ -1,17 +1,13 @@
+import { urlApi } from '../constants';
 import { Animal } from '../model';
 
-const {
-  VITE_SERVER_PORT: SERVER_PORT,
-  VITE_SERVER_URL: SERVER_URL,
-} = import.meta.env;
-
 function getAnimal(id: string): Promise<Animal> {
-  return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal/${id}`, { method: 'GET' })
+  return fetch(`http://${urlApi}animal/${id}`, { method: 'GET' })
     .then((raw) => raw.json());
 }
 
 function getAnimalList(offset: number, search: string, limit: number): Promise<Animal[]> {
-  return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal/list`, {
+  return fetch(`http://${urlApi}animal/list`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,7 +18,7 @@ function getAnimalList(offset: number, search: string, limit: number): Promise<A
 }
 
 function postAnimal(animal: Animal): Promise<Animal> {
-  return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal`, {
+  return fetch(`http://${urlApi}animal`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +29,7 @@ function postAnimal(animal: Animal): Promise<Animal> {
 }
 
 function putAnimal(animal: Animal): Promise<Animal> {
-  return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal`, {
+  return fetch(`http://${urlApi}animal`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -44,7 +40,7 @@ function putAnimal(animal: Animal): Promise<Animal> {
 }
 
 function deleteAnimal(id: string): Promise<boolean> {
-  return fetch(`http://${SERVER_URL}:${SERVER_PORT}/animal/${id}`, { method: 'DELETE' })
+  return fetch(`http://${urlApi}animal//${id}`, { method: 'DELETE' })
     .then((raw) => raw.json());
 }
 
