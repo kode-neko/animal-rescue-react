@@ -62,7 +62,7 @@ const MainBar = ({ isOpen, handleDrawerClose }:MainBarProps) => {
     <List>
       {socialList.map((social: Social) => (
         <ListItem key={social.name} disablePadding>
-          <ListItemButton onClick={() => navigate(social.url)}>
+          <ListItemButton onClick={() => window.open(social.url, '__blank')}>
             <ListItemIcon><social.icon /></ListItemIcon>
             <ListItemText>{ social.name }</ListItemText>
           </ListItemButton>

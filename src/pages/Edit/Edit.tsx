@@ -6,13 +6,11 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { HeaderSubpage } from '../../components/HeaderSubpage';
 import { routerEdit, routerMaster } from '../../common/router';
-import { Form } from '../../components';
+import { Form, HeaderSubPage } from '../../components';
 import { Animal } from '../../common/model';
 import { getAnimal, postAnimal, putAnimal } from '../../common/api';
 import { setPending } from '../../common/store/action';
-import AnimalForm from '../../common/model/AnimalForm';
 
 const Edit = () => {
   const { t } = useTranslation();
@@ -35,7 +33,7 @@ const Edit = () => {
     }
   }, []);
 
-  const handleSave = (values: AnimalForm) => {
+  const handleSave = (values: Animal) => {
     dispatch(setPending({ type: 'animalPut', state: true }));
     putAnimal(values)
       .then((res: Animal) => {
@@ -51,7 +49,7 @@ const Edit = () => {
 
   return (
     <Box>
-        <HeaderSubpage path={path} title="pages.edit" />
+        <HeaderSubPage path={path} title="pages.edit" />
         {animal && (
           <Form
             animal={animal}
