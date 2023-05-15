@@ -2,12 +2,12 @@ import { urlApi } from '../constants';
 import { Animal } from '../model';
 
 function getAnimal(id: string): Promise<Animal> {
-  return fetch(`http://${urlApi}animal/${id}`, { method: 'GET' })
+  return fetch(`${urlApi}/animal/${id}`, { method: 'GET' })
     .then((raw) => raw.json());
 }
 
 function getAnimalList(offset: number, search: string, limit: number): Promise<Animal[]> {
-  return fetch(`http://${urlApi}animal/list`, {
+  return fetch(`${urlApi}/animal/list`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ function getAnimalList(offset: number, search: string, limit: number): Promise<A
 }
 
 function postAnimal(animal: Animal): Promise<Animal> {
-  return fetch(`http://${urlApi}animal`, {
+  return fetch(`${urlApi}/animal`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -29,7 +29,7 @@ function postAnimal(animal: Animal): Promise<Animal> {
 }
 
 function putAnimal(animal: Animal): Promise<Animal> {
-  return fetch(`http://${urlApi}animal`, {
+  return fetch(`${urlApi}/animal`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ function putAnimal(animal: Animal): Promise<Animal> {
 }
 
 function deleteAnimal(id: string): Promise<boolean> {
-  return fetch(`http://${urlApi}animal//${id}`, { method: 'DELETE' })
+  return fetch(`${urlApi}/animal/${id}`, { method: 'DELETE' })
     .then((raw) => raw.json());
 }
 
