@@ -120,7 +120,6 @@ const Form = ({ animal, handleSave }: FormProps) => {
                                 label={t('labels.bday')}
                                 value={date}
                                 onChange={(newValue) => setDate(newValue)}
-                                renderInput={(params) => <TextField {...params} />}
                             />
                         </LocalizationProvider>
                     </FormControl>
