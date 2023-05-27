@@ -1,10 +1,18 @@
 import React from 'react';
-import { Box, ToggleButtonGroup, ToggleButton } from '@mui/material';
+import { Box, ToggleButtonGroup, ToggleButton, styled, ToggleButtonProps } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { RootState } from '../../common/store/store';
 import { setLang } from '../../common/store/action/user';
+import { Theme } from '../../common/model';
+
+const ToggleButtonCustom = styled(ToggleButton)<ToggleButtonProps>(({ theme }) => ({
+  "&.Mui-selected, &.Mui-selected:hover": {
+    color: 'white',
+    backgroundColor: theme.palette.mode === Theme.DARK ? 'rgba(255, 255, 255, 0.16)' : 'rgba(0, 0, 0, 0.2);'
+  },
+}));
 
 const SwitchLang = () => {
   const dispatch = useDispatch();
@@ -28,8 +36,8 @@ const SwitchLang = () => {
         onChange={handleSwitch}
         aria-label="changing language"
       >
-        <ToggleButton value="en" aria-label="english">{'EN'}</ToggleButton>
-        <ToggleButton value="es" aria-label="spanish">{'ES'}</ToggleButton>
+        <ToggleButtonCustom value="en" aria-label="english">{'EN'}</ToggleButtonCustom>
+        <ToggleButtonCustom value="es" aria-label="spanish">{'ES'}</ToggleButtonCustom>
       </ToggleButtonGroup>
       <TranslateIcon />
     </Box>

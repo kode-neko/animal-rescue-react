@@ -64,7 +64,7 @@ const InfoCard = ({ animal, handleDelete }: InfoCardProps) => {
   );
 
   return (
-    <Card elevation={3} sx={{ padding: '10px' }}>
+    <Card elevation={8} sx={{ padding: '10px' }}>
         <CardHeader
             avatar={<Avatar alt="animal" src={getAvatarPic(animal.species)} sx={{ width: '52px', height: '52px' }} />}
             title={<Box display="flex" alignItems="center">{getSex(animal.sex)}<h2>{animal.name}</h2></Box>}

@@ -19,8 +19,8 @@ type AppKeys = keyof App;
 
 const reducers = {
   setPending: (state: App, action: PayloadAction<PayloadAppPending>) => {
-    const { type } = action.payload;
-    state[type as AppKeys] = action.payload.state;
+    const { type, state: stateAct } = action.payload;
+    state[type as AppKeys] = stateAct;
   },
 };
 

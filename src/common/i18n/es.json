@@ -4,6 +4,7 @@
     "create": "Crear",
     "edit": "Editar"
   },
+  "noData": "Animales no encontrados...",
   "credits": "Kodeneko @ 2022",
   "msg": {
     "errorGet": "No se pudo obtener la información del animal. Inténtelo más tarde",
@@ -33,7 +34,8 @@
     "save": "Guardar",
     "edit": "Editar",
     "delete": "Eliminar",
-    "loadmore": "Cargar más"
+    "loadmore": "Cargar más",
+    "all": "Todos"
   },
   "placeH": {
     "search": "Buscar..."

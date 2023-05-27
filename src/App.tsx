@@ -7,16 +7,14 @@ import { ThemeProvider } from '@emotion/react';
 import { useSelector } from 'react-redux';
 import { RouterProvider } from 'react-router-dom';
 import { SnackbarProvider } from 'notistack';
-import {
-  amber, deepOrange, grey, blueGrey,
-} from '@mui/material/colors';
 import { Theme } from './common/model';
 import { RootState } from './common/store/store';
 import router from './common/router';
 
-declare module '@mui/material/styles' {
-  interface PaletteColor {
-    backy?: string;
+
+declare module '@mui/material/ToggleButtonGroup' {
+  interface ToggleButtonPropsVariantOverrides {
+    mainbar: false;
   }
 }
 
@@ -26,15 +24,7 @@ export default function App() {
     () => (createTheme({
       palette: {
         mode: theme === Theme.DARK ? Theme.DARK : Theme.LIGHT,
-        ...(theme === 'light'
-          ? {
-            backy: '#000',
-          }
-          : {
-            backy: '#FFF',
-          }
-        ),
-      },
+      }
     })),
     [theme],
   );

@@ -52,7 +52,7 @@ const MainBar = () => {
   );
 
   const optionsBar = (
-    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '6px' } }}>
+    <Box sx={{ display: { xs: 'none', sm: 'flex', gap: '14px' } }}>
       <IconButton
         size="large"
         edge="end"
@@ -69,7 +69,7 @@ const MainBar = () => {
         edge="end"
         aria-label="watch social media"
         aria-controls="social"
-        sx={{ color: 'white', marginRight: '4px' }}
+        sx={{ color: 'white'}}
         onClick={handleClickSocialBtn}
       >
         <ShareIcon />

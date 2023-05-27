@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 const Footer = () => {
   const { t } = useTranslation();
   return (
-        <Box textAlign="center">{t('credits')}</Box>
+    <div>
+      <Box textAlign="center">{t('credits')}</Box>
+    </div>
   );
 };
 

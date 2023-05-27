@@ -7,22 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../common/store/store';
 import { Theme } from '../../common/model';
 import { setTheme } from '../../common/store/action/user';
+import styles from './SwitchTheme.module.scss'
 
 const SwitchTheme = () => {
   const dispatch = useDispatch();
   const theme = useSelector((state: RootState) => state.user.theme);
-  const handleSwitch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    const themeNew = value === Theme.DARK ? Theme.LIGHT : Theme.DARK;
+  const handleSwitch = async () => {
+    const themeNew = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
     dispatch(setTheme({ theme: themeNew }));
   };
   return (
-    <FormControlLabel
-      control={<Switch defaultChecked color="default" />}
-      value={theme}
-      label={ theme === Theme.DARK ? <DarkModeIcon fontSize='medium'/> : <LightModeIcon fontSize='medium'/>}
-      onChange={(e) => handleSwitch(e as React.ChangeEvent<HTMLInputElement>)}
-    />
+    <div className={styles.cont} onClick={handleSwitch}>
+      <Switch defaultChecked color="default" />
+      { theme === Theme.DARK ? <DarkModeIcon fontSize='medium'/> : <LightModeIcon fontSize='medium'/>}
+    </div>
   );
 };
 

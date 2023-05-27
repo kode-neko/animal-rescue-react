@@ -4,6 +4,7 @@
     "create": "Create",
     "edit": "Edition"
   },
+  "noData": "No animals found...",
   "credits": "Kodeneko @ 2022",
   "msg": {
     "errorGet": "It cannot be got the animal information. Try again later",
@@ -33,7 +34,8 @@
     "save": "Save",
     "edit": "Edit",
     "delete": "Delete",
-    "loadmore": "Load more"
+    "loadmore": "Load more",
+    "all": "All"
   },
   "placeH": {
     "search": "Search..."
