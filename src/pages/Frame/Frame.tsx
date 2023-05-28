@@ -13,7 +13,10 @@ const Frame = () => {
   return (
     <Box sx={{ py: 15 }}>
       <MainBar />
-      <Backdrop open={animalGetList || animalGet || animalPost || animalPut || animalDelete}>
+      <Backdrop 
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={animalGetList || animalGet || animalPost || animalPut || animalDelete}
+      >
         <CircularProgress color="inherit" />
       </Backdrop>
       <Container maxWidth="md" sx={{ mb: 5 }}>
