@@ -112,7 +112,7 @@ const Master = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyUp={insertEnter}
-          sx={{ minWidth: { xs: '100%', md: 'auto' } }}
+          sx={{ width: { xs: '100%', md: 'auto' } }}
         />
         <Button variant="contained" onClick={() => initSearch(search)}><SearchIcon /></Button>
         <Button variant="outlined" onClick={initSearchAll}>{t('labels.all')}</Button>
